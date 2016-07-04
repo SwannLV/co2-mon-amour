@@ -20,10 +20,14 @@
     "default_title": "CO2... NOT!",
     "default_popup": "src/browser_action/browser_action.html"
   },
+  "permissions": [
+    "storage",
+    "tabs"
+  ],
   "content_scripts": [
     {
       "matches": [
-        "https://www.google.com/*"
+        "http://*/*", "https://*/*"
       ],
       "js": [
         "src/inject/inject.js"
