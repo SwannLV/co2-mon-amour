@@ -11,3 +11,21 @@ chrome.extension.sendMessage({}, function(response) {
 	}
 	}, 10);
 });
+
+
+
+$(function(){
+
+	//page loaded
+	console.log("CO2 : PAGE LOAD DETECTED : " + window.location.host);
+
+	//html5 video
+    var video = $('video');
+    video.on('playing', function(){
+		console.log("CO2 : PLAYING VIDEO DETECTED");
+    });
+    video.on('pause', function(){
+		console.log("CO2 : STOPPED VIDEO DETECTED");
+    });
+	
+})
