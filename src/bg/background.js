@@ -38,10 +38,22 @@ function LoadIcon(){
   });
 }*/
 
-chrome.browserAction.setBadgeText({
-  text: "10+",/*,
-  color: [0,255,0,255]*/
-});
-chrome.browserAction.setBadgeBackgroundColor({
-  color: [0,255,0,255]
+function updateBadgeText (co2Count) {
+    if(!isNaN(co2Count))
+    {
+      chrome.browserAction.setBadgeText({
+        text: co2Count.toString()
+      });
+      chrome.browserAction.setBadgeBackgroundColor({
+        color: [0,255,0,255]
+      });
+    }
+}
+
+chrome.storage.onChanged.addListener(function(changes, namespace) {
+  for (key in changes) {      
+    if(key == "co2Count"){ 
+      updateBadgeText(changes[key].newValue);
+    }
+  }
 });
