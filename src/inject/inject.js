@@ -20,7 +20,7 @@ function AddCo2(co2ToAdd)
 
 function SaveCo2Count(value)
 {
-	chrome.storage.sync.set({'co2Count': value}, function() {
+	chrome.storage.local.set({'co2Count': value}, function() {
 		message('co2Count saved');
 	});
 }
@@ -80,7 +80,7 @@ function InitCo2Detections()
 
 //init
 $(function(){
-	chrome.storage.sync.get("co2Count", function (obj) { 
+	chrome.storage.local.get("co2Count", function (obj) { 
 		if(isNaN(obj.co2Count)){ obj.co2Count = 0.0; SaveCo2Count(obj.co2Count); }
 		co2Count = obj.co2Count;
 		InitCo2Detections();
