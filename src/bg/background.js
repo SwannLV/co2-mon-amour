@@ -53,7 +53,7 @@ function updateBadgeText (co2Count) {
 chrome.storage.onChanged.addListener(function(changes, namespace) {
   for (key in changes) {      
     if(key == "co2Count"){ 
-      updateBadgeText(changes[key].newValue);
+      updateBadgeText(parseInt(changes[key].newValue));
     }
   }
 });
