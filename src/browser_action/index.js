@@ -7,6 +7,6 @@ $(function(){
   // });
 
   console.log(localStorage["co2"])
-  $("#co2-count").html("TODO CO2 COUNT");
+  $("#co2-count").html("XXX gCO2");
 
 });
