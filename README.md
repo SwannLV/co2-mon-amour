@@ -18,3 +18,7 @@ Affiche les gCO2 dépensés par
 
 ## Objectif au niveau du code :
 Dépenser le moins possible de CO2 bien entendu, en faisant travailler le navigateur sans faire de requête web supplémentaire.
+
+## Objectif en terme d'image :
+- Informatif, pas culpabilisant
+- Conseils
