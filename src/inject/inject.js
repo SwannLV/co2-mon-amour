@@ -5,38 +5,57 @@ chrome.extension.sendMessage({}, function(response) {
 
 		// ----------------------------------------------------------
 		// This part of the script triggers when page is done loading
-		console.log("Hello. This message was sent from scripts/inject.js");
+		//console.log("Hello. This message was sent from scripts/inject.js");
 		// ----------------------------------------------------------
 	}}, 10);
 });
+
+
+////////////// TODO : TOOLS CLASS ////////////
+function GetQueryStringInUrl(name) {
+    var url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"), results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+//////////////////////////////////////////////
 
 var co2Count = 0;
 
 function AddCo2(co2ToAdd)
 {
-	co2Count += parseFloat(co2ToAdd);
-	SaveCo2Count(co2Count);	
+	chrome.storage.local.get("co2Count", function (obj) { 
+		if(!isNaN(obj.co2Count)){	
+			co2Count = parseFloat(obj.co2Count);
+			co2Count += parseFloat(co2ToAdd);
+			SaveCo2Count(co2Count);	
+		}
+	});	
+	
 }
 
 function SaveCo2Count(value)
 {
 	chrome.storage.local.set({'co2Count': value}, function() {
-		message('co2Count saved');
+		console.log('local storage : co2Count saved');
 	});
 }
 
 var videoTimer;
 var videoPlaying = false;
+var nbSecondsVideoInterval = 5;
 
 function VideoStarted()
 {
 	videoPlaying = true;	
-	videoTimer = window.setInterval("VideoPlaying()", 1000);
+	videoTimer = window.setInterval("VideoPlaying()", 1000 * nbSecondsVideoInterval);
 }
 
 function VideoPlaying()
 {
-	var co2 = 0.02;
+	var co2 = 0.02 * nbSecondsVideoInterval;
 	AddCo2(co2);	
 	console.log("CO2 : +" + co2 + " = " + co2Count);
 }
@@ -48,12 +67,31 @@ function VideoStopped()
 	window.clearInterval(videoTimer);
 }
 
-function PageLoaded()
+function GoogleSearch()
+{
+	var co2 = 6.5;
+	AddCo2(co2);
+	console.log("CO2 : GOOGLE SEARCH : " + window.location.host);
+	console.log("CO2 : +" + co2 + " = " + co2Count);
+}
+
+function RegularPageLoaded()
 {
 	var co2 = 1.1;
 	AddCo2(co2);
-	console.log("CO2 : PAGE LOAD DETECTED : " + window.location.host);
+	console.log("CO2 : REGULAR PAGE LOAD DETECTED : " + window.location.host);
 	console.log("CO2 : +" + co2 + " = " + co2Count);
+}
+
+function PageLoaded()
+{
+	var host = window.location.host;
+	if(host.indexOf(".google.") > -1 && GetQueryStringInUrl("q")){
+		GoogleSearch();
+	}
+	else{
+		RegularPageLoaded();
+	}
 }
 
 function InitCo2Detections()
@@ -88,6 +126,16 @@ $(function(){
 })
 
 /*
+
+
+requête de navigateur web c'est quand tu mets directement l'adresse du site web
+1.01
+
+requête internet c'est une recherche.
+6.5
+
+Pour 1 sec de video - source googlegreen
+0,02
 
 1 km en voiture = 250 gCO2
 1 km en avion par personne = 85 gCO2 (attention à celui la, possible qu'il envoit un mauvais signal, les gens peuvent se dire que ca n'émet pas bcp en fait l'avion...)
