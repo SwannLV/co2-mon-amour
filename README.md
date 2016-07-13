@@ -9,7 +9,7 @@ Affiche les gCO2 dépensés par
 ## Pour installer cette version :
 - Télécharger https://github.com/SwannLV/co2-mon-amour/archive/master.zip
 - Dézipper le dossier quelque part
-- Dans chrome, charger l'url "chrome://extensions/"
+- Dans Chrome ou Opéra, charger l'url "chrome://extensions/"
 - Cocher la case "Mode développeur"
 - Appuyer sur "Charger l'extension non empaquetée..."
 - Retrouver le dossier dézippé
