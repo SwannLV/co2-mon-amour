@@ -26,20 +26,24 @@ var co2Count = 0;
 
 function AddCo2(co2ToAdd)
 {
-	chrome.storage.local.get("co2Count", function (obj) { 
+	var key = "co2Count";
+	chrome.storage.local.get(key, function (obj) { 
 		if(!isNaN(obj.co2Count)){	
 			co2Count = parseFloat(obj.co2Count);
 			co2Count += parseFloat(co2ToAdd);
-			SaveCo2Count(co2Count);	
+			SaveToLocalStorage(key, co2Count);	
 		}
 	});	
 	
 }
 
-function SaveCo2Count(value)
+function SaveToLocalStorage(key, value)
 {
-	chrome.storage.local.set({'co2Count': value}, function() {
-		console.log('local storage : co2Count saved');
+	var obj = {};
+	obj[key] = value;
+	chrome.storage.local.set(obj, function() {
+		console.log('local storage \"' + key + '\" saved with value :');
+    console.log(value);
 	});
 }
 

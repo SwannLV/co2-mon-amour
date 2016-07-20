@@ -57,3 +57,19 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
     }
   }
 });
+
+chrome.storage.local.get("lastReset", function (obj) { 
+  console.log(obj)
+  //if(isNaN(obj.lastReset)){ obj.lastReset = Date.now(); SaveToLocalStorage("lastReset", obj.lastReset); }
+  obj.lastReset = Date.now(); SaveToLocalStorage("lastReset", obj.lastReset);
+});
+
+function SaveToLocalStorage(key, value)
+{
+	var obj = {};
+	obj[key] = value;
+	chrome.storage.local.set(obj, function() {
+		console.log('local storage \"' + key + '\" saved with value :');
+    console.log(value);
+	});
+}
