@@ -70,9 +70,9 @@ function DisplayLastReset(date)
 function GetFormattedDate(date) 
 {
     var month = ("0" + (date.getMonth() + 1)).slice(-2);
-    var day = ("0" +date.getDate()).slice(-2);
+    var day = ("0" + date.getDate()).slice(-2);
     var year = date.getFullYear();
     var hours = date.getHours();
-    var minutes = date.getMinutes();
+    var minutes = ("0" + date.getMinutes()).slice(-2);
     return day + "/" + month + "/" + year + " " + hours + ":" + minutes;
 }
