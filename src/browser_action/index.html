@@ -6,13 +6,59 @@
 
 	<style type="text/css">
 		#mainPopup {
-			padding: 10px;
-			height: 200px;
-			width: 400px;
-			font-family: Helvetica, Ubuntu, Arial, sans-serif;
+		padding: 10px;
+		height: 200px;
+		width: 400px;
+		font-family: Helvetica, Ubuntu, Arial, sans-serif;
 		}
 		h1 {
-			font-size: 2em;
+		font-size: 2em;
+		}
+		#text{
+		position: relative;
+		z-index: 3;
+		color: white;
+		text-align: center;
+		vertical-align: middle;
+		}
+		#heart {
+		position:relative;
+		width:100px;
+		height:100px;
+		}
+		#heart:before,#heart:after {
+		position:absolute;
+		content:"";
+		left:50px;
+		top:0;
+		width:50px;
+		height:80px;
+		background:#F00000;
+		-moz-border-radius:50px 50px 0 0;
+		border-radius:50px 50px 0 0;
+		-webkit-transform:rotate(-45deg);
+		-moz-transform:rotate(-45deg);
+		-ms-transform:rotate(-45deg);
+		-o-transform:rotate(-45deg);
+		transform:rotate(-45deg);
+		-webkit-transform-origin:0 100%;
+		-moz-transform-origin:0 100%;
+		-ms-transform-origin:0 100%;
+		-o-transform-origin:0 100%;
+		transform-origin:0 100%;
+		}
+		#heart:after {
+		left: 0;
+		-webkit-transform:rotate(45deg);
+		-moz-transform:rotate(45deg);
+		-ms-transform:rotate(45deg);
+		-o-transform:rotate(45deg);
+		transform:rotate(45deg);
+		-webkit-transform-origin:100% 100%;
+		-moz-transform-origin:100% 100%;
+		-ms-transform-origin:100% 100%;
+		-o-transform-origin:100% 100%;
+		transform-origin:100% 100%;
 		}
 	</style>
 
@@ -28,9 +74,9 @@
 		<br>
 		
 		<h3>Votre consommation depuis le <span id="lastReset"></span></h3>
-		<h3><span id="co2-count"></span> gCO2</h3>
 		
-		<br>
+		<div id="heart"><br/><h3 id="text"><span id="co2-count"></span> gCO2</h3></div>
+		
 		
 		<h3>Equivalences :</h3>
 		<ul id="equi">

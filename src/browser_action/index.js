@@ -16,7 +16,7 @@ function Init()
 	});	
 
   chrome.storage.local.get("lastReset", function (obj) { 
-   // if(isNaN(obj.lastReset)){ obj.lastReset = Date.now(); SaveToLocalStorage("lastReset", obj.lastReset); }
+    if(isNaN(obj.lastReset)){ obj.lastReset = Date.now(); SaveToLocalStorage("lastReset", obj.lastReset); }
     DisplayLastReset(obj.lastReset);
   });
 }
