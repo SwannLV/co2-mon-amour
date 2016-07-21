@@ -79,5 +79,5 @@ function GetFormattedDate(date)
     var year = date.getFullYear();
     var hours = date.getHours();
     var minutes = ("0" + date.getMinutes()).slice(-2);
-    return day + "/" + month + "/" + year + " " + hours + ":" + minutes;
+    return day + "/" + month + "/" + year + " à " + hours + ":" + minutes;
 }
