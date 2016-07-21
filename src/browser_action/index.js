@@ -30,17 +30,19 @@ function ResetCo2Count()
 
 function DisplayEquivalences(co2User)
 {  
-  $("#equi").html(
-    FormatEquivalence(co2User, 250.0, 2, "<b>[v] km</b> en voiture") +
+  $("#equi1").html(
+    FormatEquivalence(co2User, 250.0, 2, "<b>[v] km</b> en voiture", "car3") +
+    FormatEquivalence(co2User, 8.0, 0, "Une ampoule allumée durant <b>[v] h</b> en France", "amp1")
+  );
+  $("#equi2").html(
     FormatEquivalence(co2User, 85.0, 2, "<b>[v] km</b> en avion par personne") +
     FormatEquivalence(co2User, 2.6, 0, "Frigo allumé pendant <b>[v] h</b> en France") +
-    FormatEquivalence(co2User, 46.6, 0, "Incinération de <b>[v] kg</b> de papier en France") +
-    FormatEquivalence(co2User, 8.0, 0, "Une ampoule allumée durant <b>[v] h</b> en France") +
+    FormatEquivalence(co2User, 46.6, 0, "Incinération de <b>[v] kg</b> de papier en France")  +
     FormatEquivalence(co2User, 29.0, 0, "Une ampoule allumée durant <b>[v] h</b> en Europe")
   );
 }
 
-function FormatEquivalence(co2User, co2Base, decimals, text)
+function FormatEquivalence(co2User, co2Base, decimals, text, img)
 {
   var value = co2User / co2Base;
   if (decimals === 0){
@@ -48,6 +50,9 @@ function FormatEquivalence(co2User, co2Base, decimals, text)
   }
   else{
     value = parseFloat(value).toFixed(decimals)
+  }
+  if(img){
+    text += " <img src=\"../../icons/" + img + ".png\" height=\"25px\"/>";
   }
   return "<li>"+ text.replace("[v]", value) + "</li>";
 }
