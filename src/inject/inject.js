@@ -46,14 +46,15 @@ function SaveToLocalStorage(key, value)
 	var obj = {};
 	obj[key] = value;
 	chrome.storage.local.set(obj, function() {
-		console.log('local storage \"' + key + '\" saved with value :');
-    console.log(value);
+		/*console.log('local storage \"' + key + '\" saved with value :');
+    	console.log(value);*/
 	});
 }
 
 function VideoStarted()
 {
 	_streaming = true;	
+	console.log("CO2 : Video started");
 	_streamingTimer = window.setInterval("VideoPlaying()", 1000 * _nbSecondsStreamingInterval);
 }
 
@@ -67,13 +68,14 @@ function VideoPlaying()
 function VideoStopped()
 {	
 	_streaming = false;
-	console.log("CO2 : STOPPED VIDEO DETECTED");
+	console.log("CO2 : Video stopped");
 	window.clearInterval(_streamingTimer);
 }
 
 function AudioStarted()
 {
 	_streaming = true;	
+	console.log("CO2 : Audio started");
 	_streamingTimer = window.setInterval("AudioPlaying()", 1000 * _nbSecondsStreamingInterval);
 }
 
