@@ -47,28 +47,42 @@ function SaveToLocalStorage(key, value)
 	});
 }
 
-var videoTimer;
-var videoPlaying = false;
-var nbSecondsVideoInterval = 5;
+var _streamingTimer;
+var _streaming = false;
+var _nbSecondsStreamingInterval = 5;
+var _isHtml5Video = false;
 
 function VideoStarted()
 {
-	videoPlaying = true;	
-	videoTimer = window.setInterval("VideoPlaying()", 1000 * nbSecondsVideoInterval);
+	_streaming = true;	
+	_streamingTimer = window.setInterval("VideoPlaying()", 1000 * _nbSecondsStreamingInterval);
 }
 
 function VideoPlaying()
 {
-	var co2 = 0.02 * nbSecondsVideoInterval;
+	var co2 = 0.02 * _nbSecondsStreamingInterval;
 	AddCo2(co2);	
 	console.log("CO2 : +" + co2 + " = " + co2Count);
 }
 
 function VideoStopped()
 {	
-	videoPlaying = false;
+	_streaming = false;
 	console.log("CO2 : STOPPED VIDEO DETECTED");
-	window.clearInterval(videoTimer);
+	window.clearInterval(_streamingTimer);
+}
+
+function AudioStarted()
+{
+	_streaming = true;	
+	_streamingTimer = window.setInterval("AudioPlaying()", 1000 * _nbSecondsStreamingInterval);
+}
+
+function AudioPlaying()
+{
+	var co2 = 0.01 * _nbSecondsStreamingInterval;
+	AddCo2(co2);
+	console.log("CO2 : +" + co2 + " = " + co2Count);
 }
 
 function GoogleSearch()
@@ -89,12 +103,24 @@ function RegularPageLoaded()
 
 function PageLoaded()
 {
-	var host = window.location.host;
+	var host = window.location.host.toLowerCase();
 	if(host.indexOf(".google.") > -1 && GetQueryStringInUrl("q")){
 		GoogleSearch();
 	}
 	else{
 		RegularPageLoaded();
+	}
+
+	if (!_isHtml5Video){
+		if(	host.indexOf("stream") > -1 ||
+			host.indexOf("netflix.") > -1 ||
+			host.indexOf("hulu.") > -1){
+			VideoStarted();
+		}
+		else if (	host.indexOf("deezer.") > -1 ||
+					host.indexOf("soundcloud.") > -1){
+			AudioStarted();
+		}
 	}
 }
 
@@ -103,11 +129,12 @@ function InitCo2Detections()
 	//html5 video
     var video = $('video');
 	if(video.length > 0){
-		if(!video.paused && !videoPlaying){ //since the co2Count take some times to come from the storage, the video might be playing already
+		_isHtml5Video = true;
+		if(!video.paused && !_streaming){ //since the co2Count take some times to come from the storage, the video might be playing already
 			VideoStarted()
 		}
 		video.on('playing', function(){
-			if(!video.paused && !videoPlaying){
+			if(!video.paused && !_streaming){
 				VideoStarted()
 			}
 		});
