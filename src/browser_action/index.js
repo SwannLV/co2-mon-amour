@@ -43,6 +43,12 @@ function DisplayEquivalences(co2User)
   );
 }
 
+/*
+100km en voiture essence consommant 6l/100km
+Emission de 15 kg d’équivalent CO2
+Soit 15x60=900kg de glace soit 1m3 de glace 
+*/
+
 function FormatEquivalence(co2User, co2Base, decimals, text, img)
 {
   var value = co2User / co2Base;
