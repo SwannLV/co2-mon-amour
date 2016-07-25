@@ -22,16 +22,20 @@ function GetQueryStringInUrl(name) {
 }
 //////////////////////////////////////////////
 
-var co2Count = 0;
+var _co2Count = 0;
+var _streamingTimer;
+var _streaming = false;
+var _nbSecondsStreamingInterval = 5;
+var _isHtml5Video = false;
 
 function AddCo2(co2ToAdd)
 {
 	var key = "co2Count";
 	chrome.storage.local.get(key, function (obj) { 
 		if(!isNaN(obj.co2Count)){	
-			co2Count = parseFloat(obj.co2Count);
-			co2Count += parseFloat(co2ToAdd);
-			SaveToLocalStorage(key, co2Count);	
+			_co2Count = parseFloat(obj.co2Count);
+			_co2Count += parseFloat(co2ToAdd);
+			SaveToLocalStorage(key, _co2Count);	
 		}
 	});	
 	
@@ -47,11 +51,6 @@ function SaveToLocalStorage(key, value)
 	});
 }
 
-var _streamingTimer;
-var _streaming = false;
-var _nbSecondsStreamingInterval = 5;
-var _isHtml5Video = false;
-
 function VideoStarted()
 {
 	_streaming = true;	
@@ -62,7 +61,7 @@ function VideoPlaying()
 {
 	var co2 = 0.02 * _nbSecondsStreamingInterval;
 	AddCo2(co2);	
-	console.log("CO2 : +" + co2 + " = " + co2Count);
+	console.log("CO2 : +" + co2 + " = " + _co2Count);
 }
 
 function VideoStopped()
@@ -82,7 +81,7 @@ function AudioPlaying()
 {
 	var co2 = 0.01 * _nbSecondsStreamingInterval;
 	AddCo2(co2);
-	console.log("CO2 : +" + co2 + " = " + co2Count);
+	console.log("CO2 : +" + co2 + " = " + _co2Count);
 }
 
 function GoogleSearch()
@@ -90,7 +89,7 @@ function GoogleSearch()
 	var co2 = 6.5;
 	AddCo2(co2);
 	console.log("CO2 : GOOGLE SEARCH : " + window.location.host);
-	console.log("CO2 : +" + co2 + " = " + co2Count);
+	console.log("CO2 : +" + co2 + " = " + _co2Count);
 }
 
 function RegularPageLoaded()
@@ -98,7 +97,7 @@ function RegularPageLoaded()
 	var co2 = 1.1;
 	AddCo2(co2);
 	console.log("CO2 : REGULAR PAGE LOAD DETECTED : " + window.location.host);
-	console.log("CO2 : +" + co2 + " = " + co2Count);
+	console.log("CO2 : +" + co2 + " = " + _co2Count);
 }
 
 function PageLoaded()
@@ -151,7 +150,7 @@ function InitCo2Detections()
 $(function(){
 	chrome.storage.local.get("co2Count", function (obj) { 
 		if(isNaN(obj.co2Count)){ obj.co2Count = 0.0; SaveCo2Count(obj.co2Count); }
-		co2Count = obj.co2Count;
+		_co2Count = obj.co2Count;
 		InitCo2Detections();
 	});	
 })
