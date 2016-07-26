@@ -9,12 +9,15 @@
 - Retrouver le dossier dézippé
 - Et voilà!
 
+
 ## Objectif au niveau du code :
 Dépenser le moins possible de CO2 bien entendu, en faisant travailler le navigateur sans faire de requête web supplémentaire.
+
 
 ## Objectifs en terme d'image :
 - Informatif, pas culpabilisant
 - Conseils
+
 
 ## Version 0.0.1 :
 Affiche les gCO2 dépensés par
@@ -25,6 +28,7 @@ Affiche les gCO2 dépensés par
 Equivalences
 - Voiture
 - Ampoule
+
 
 ## Version 0.0.2 :
 Affiche les gCO2 dépensés par
