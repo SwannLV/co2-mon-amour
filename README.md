@@ -35,6 +35,3 @@ Affiche les gCO2 dépensés par
 - chaque tranche de 5s de streaming video hors html5 : +0.10 gCO2/5s environ
 - chaque tranche de 5s de streaming audio : +0.05 gCO2/5s environ
 
-Equivalences
-- Glace fondue
-
