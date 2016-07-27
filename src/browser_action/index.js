@@ -35,12 +35,12 @@ function DisplayEquivalences(co2User)
     FormatEquivalence(co2User, 8.0, 0, "<b>[v] h</b> d'ampoule allumée en France", "amp1") +
     FormatEquivalence(co2User, 15000.0 / 900.0 , 2, "<b>[v] kg</b> de glace fondue (ça fait peur ça, il faut le virer)", "ice1")
   );
-  $("#equi2").html(
+  /*$("#equi2").html(
     // FormatEquivalence(co2User, 85.0, 2, "<b>[v] km</b> en avion par personne") +
      FormatEquivalence(co2User, 2.6, 0, "Frigo allumé pendant <b>[v] h</b> en France") +
      FormatEquivalence(co2User, 46.6, 0, "Incinération de <b>[v] kg</b> de papier en France") // +
     //FormatEquivalence(co2User, 29.0, 0, "<b>[v] h</b> d'ampoule allumée en Europe")
-  );
+  );*/
 }
 
 /*
