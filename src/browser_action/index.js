@@ -33,7 +33,7 @@ function DisplayEquivalences(co2User)
   $("#equi1").html(
     FormatEquivalence(co2User, /*250.0*/ 150.0, 2, "<b>[v] km</b> de voiture", "car3") +
     FormatEquivalence(co2User, 8.0, 0, "<b>[v] h</b> d'ampoule allumée en France", "amp1") +
-    FormatEquivalence(co2User, 15000.0 / 900.0 , 2, "<b>[v] kg</b> de glace fondue (ça fait peur ça, il faut le virer)", "ice1")
+    FormatEquivalence(co2User, 15000.0 / 900.0 , 2, "<b>[v] kg</b> de glace fondue", "ice1")
   );
   /*$("#equi2").html(
     // FormatEquivalence(co2User, 85.0, 2, "<b>[v] km</b> en avion par personne") +
