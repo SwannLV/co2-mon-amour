@@ -4,7 +4,16 @@
 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-	<!--<link href="../../css/bootstrap.min.css" rel="stylesheet">-->
+	<!-- Material Design fonts -->
+	<link rel="stylesheet" href="../../font/css.css" type="text/css">
+	<link href="../../font/icon.css" rel="stylesheet">
+
+	<!-- Bootstrap -->
+	<link href="../../css/bootstrap.3.3.6.min.css" rel="stylesheet">
+
+	<!-- Bootstrap Material Design -->
+	<link href="../../css/bootstrap-material-design.css" rel="stylesheet">
+	<link href="../../css/ripples.min.css" rel="stylesheet">
 
 	<style type="text/css">
 		#mainPopup {
@@ -76,33 +85,63 @@
 
 <body>
 
-	<div id="mainPopup">
-		<h1>[ CO₂ mon Amour... NOT ! ]</h1>
-		<h3>! Application en cours de construction !</h3>
+	<div class="container">
 
-		<p>Surfer écolo, est-ce possible ? Derrière la rapidité et la praticité d’Internet se cache une industrie polluante qui représente entre 2 % et 10 % des émissions de CO2 mondiales selon les études, soit plus que le secteur de l’aviation.</p>			
-		<br>
+	<div class="page-header">
+		<h1 id="navbar">[CO₂ mon Amour... NOT !]</h1>
+	</div>
 
-		<div id="heart" class="centre"><br/><h3 id="text"><span id="co2-count"></span> gCO₂</h3></div>
-        <br>
 
-		<h3>> depuis le <span id="lastReset"></span> (au minimum) <</h3>
-		<br>
+	<div class="bs-component">
+		<div class="alert alert-dismissible alert-warning">
+			<strong>Application en cours de construction !</strong>
+		</div>
+	</div>
 
-		<h3>Ce qui équivaut à :</h3>
-		<ul id="equi1">
-		</ul>
+
+	<div class="bs-component">
+
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title"><strong>Depuis le <span id="lastReset"></span> :</strong></h3>
+		</div>
+		<div class="panel-body">
+			<div id="heart" class="centre"><br/><h5 id="text"><span id="co2-count"></span> gCO₂</h5></div>
+		</div>
+		</div>
+	</div>
+
+
+	<div class="bs-component">
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h3 class="panel-title"><strong>Ce qui équivaut à :</strong></h3>
+			</div>
+			<div class="panel-body">
+				<ul id="equi1">
+			</div>
+		</div>
+	</div>
+
+
+	<div class="bs-component">
+		<div class="jumbotron">
+			<h5>Surfer écolo, est-ce possible ?</h5> Derrière la rapidité et la praticité d’Internet se cache une industrie polluante qui représente entre 2 % et 10 % des émissions de CO2 mondiales, soit plus que le secteur de l’aviation.
+		</div>			
+	</div>
 		
 		<!--<h3>Mais aussi :</h3>
 		<ul id="equi2">
 		</ul>-->
 
-		<p><img src="../../icons/net2.gif" class="centre" style="height:80px"/>
-		<button id="btnReset" class="centre">Allez, on efface tout !</button></p>
-		<br>
+		
+		<!--<button id="btnReset" class="centre"></button></p>-->
+		
 
 		<!--<p><i>"Surfer écolo, est-ce possible ? Derrière la rapidité et la praticité d’Internet se cache une industrie polluante qui représente entre 2 % et 10 % des émissions de CO2 mondiales selon les études, soit plus que le secteur de l’aviation." </i> - Kaizen.</p>			-->
 	
+		<br/>
+
 		<p><i>"Heureusement, il existe des gestes simples que vous pouvez mettre en pratique dès à présent pour rendre votre navigation plus verte !"</i> - Kaizen.</p>
 		<ul>
 			<li><a target="_blank" href="http://www.kaizen-magazine.com/bonnes-pratiques-surfer-ecolo/">http://www.kaizen-magazine.com/bonnes-pratiques-surfer-ecolo</a></li>
@@ -115,11 +154,15 @@
 		</ul>	
 		<br>
 		
-		<p>Venez nous aider à rendre cette application utile, écrivez-nous à : <b>c02monamournot@gmail.com</b </p>
-		
-		<br>
-		<br>
-		<br>		
+		<div class="bs-component">
+			<div class="alert alert-dismissible alert-info">
+				Venez nous aider à rendre cette application plus utile, écrivez-nous à : <strong>c02monamournot@gmail.com</strong>
+			</div>
+		</div>		
+
+		<img src="../../icons/net2.gif" class="centre" style="height:80px"/>
+
+		<a id="btnReset" href="" class="btn btn-raised btn-danger centre">Bouton qui efface tout !<div class="ripple-container"></div></a>
 		
 	</div>
 	<br>

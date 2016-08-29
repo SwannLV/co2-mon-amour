@@ -59,7 +59,7 @@ function FormatEquivalence(co2User, co2Base, decimals, text, img)
     value = parseFloat(value).toFixed(decimals);
   }
   if(img){
-    text += " <img src=\"../../icons/" + img + ".png\" height=\"25px\"/>";
+    text += " <img src=\"../../icons/" + img + ".png\" height=\"18px\"/>";
   }
   return "<li>"+ text.replace("[v]", value) + "</li>";
 }
