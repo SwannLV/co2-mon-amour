@@ -60,8 +60,10 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
 
 chrome.storage.local.get("lastReset", function (obj) { 
   console.log(obj)
-  //if(isNaN(obj.lastReset)){ obj.lastReset = Date.now(); SaveToLocalStorage("lastReset", obj.lastReset); }
-  obj.lastReset = Date.now(); SaveToLocalStorage("lastReset", obj.lastReset);
+  if(isNaN(obj.lastReset)){
+    obj.lastReset = Date.now(); 
+    SaveToLocalStorage("lastReset", obj.lastReset);
+  }
 });
 
 function SaveToLocalStorage(key, value)
