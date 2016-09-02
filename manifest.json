@@ -1,6 +1,6 @@
 {
-  "name": "CO², mon Amour... NOT!",
-  "version": "0.0.8",
+  "name": "eCO2logy",
+  "version": "0.0.9",
   "manifest_version": 2,
   "description": "Surfer écolo, est-ce possible ?",
   "homepage_url": "https://chrome.google.com/webstore/detail/co₂-mon-amour-not/injkhbadkipaflldkehemjglmgdnfdoj",
@@ -17,7 +17,7 @@
   "options_page": "src/options/index.html",
   "browser_action": {
     "default_icon": "icons/love3.png",
-    "default_title": "CO²... NOT!",
+    "default_title": "eCO₂logy",
     "default_popup": "src/browser_action/index.html"
   },
   "permissions": [
