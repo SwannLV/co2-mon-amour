@@ -45,7 +45,7 @@ function updateBadgeText (co2Count) {
         text: co2Count.toString()
       });
       chrome.browserAction.setBadgeBackgroundColor({
-        color: [0,210,0,150]
+        color: [3,169,244,255]
       });
     }
 }

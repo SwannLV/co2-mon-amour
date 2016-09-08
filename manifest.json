@@ -1,13 +1,13 @@
 {
   "name": "eCO2logy",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "manifest_version": 2,
   "description": "Surfer écolo, est-ce possible ?",
   "homepage_url": "https://chrome.google.com/webstore/detail/co₂-mon-amour-not/injkhbadkipaflldkehemjglmgdnfdoj",
   "icons": {
-    "16": "icons/love3.png",
-    "48": "icons/love3.png",
-    "128": "icons/love3.png"
+    "16": "icons/earth1.png",
+    "48": "icons/earth1.png",
+    "128": "icons/earth1.png"
   },
   "default_locale": "fr",
   "background": {
@@ -16,7 +16,7 @@
   },
   "options_page": "src/options/index.html",
   "browser_action": {
-    "default_icon": "icons/love3.png",
+    "default_icon": "icons/earth1.png",
     "default_title": "eCO₂logy",
     "default_popup": "src/browser_action/index.html"
   },
