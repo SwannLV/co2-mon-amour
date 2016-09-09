@@ -54,7 +54,7 @@ function SaveToLocalStorage(key, value)
 function VideoStarted()
 {
 	_streaming = true;	
-	console.log("CO2 : Video started");
+	//console.log("CO2 : Video started");
 	_streamingTimer = window.setInterval("VideoPlaying()", 1000 * _nbSecondsStreamingInterval);
 }
 
@@ -62,44 +62,58 @@ function VideoPlaying()
 {
 	var co2 = 0.02 * _nbSecondsStreamingInterval;
 	AddCo2(co2);	
-	console.log("CO2 : +" + co2 + " = " + _co2Count);
+	//console.log("CO2 : +" + co2 + " = " + _co2Count);
 }
 
 function VideoStopped()
 {	
 	_streaming = false;
-	console.log("CO2 : Video stopped");
+	//console.log("CO2 : Video stopped");
 	window.clearInterval(_streamingTimer);
 }
 
 function AudioStarted()
 {
 	_streaming = true;	
-	console.log("CO2 : Audio started");
+	//console.log("CO2 : Audio started");
 	_streamingTimer = window.setInterval("AudioPlaying()", 1000 * _nbSecondsStreamingInterval);
+}
+
+function BigWebsiteStarted(co2rate)
+{
+	_streaming = true;	
+	//console.log("CO2 : Audio started");
+	_streamingTimer = window.setInterval("BigWebsitePlaying("+co2rate+")", 1000 * _nbSecondsStreamingInterval);
+}
+
+function BigWebsitePlaying(co2rate)
+{
+	var co2 = co2rate * _nbSecondsStreamingInterval;
+	AddCo2(co2);	
+	console.log("CO2 : +" + co2 + " = " + _co2Count);
 }
 
 function AudioPlaying()
 {
 	var co2 = 0.01 * _nbSecondsStreamingInterval;
 	AddCo2(co2);
-	console.log("CO2 : +" + co2 + " = " + _co2Count);
+	//console.log("CO2 : +" + co2 + " = " + _co2Count);
 }
 
 function GoogleSearch()
 {
 	var co2 = 6.5;
 	AddCo2(co2);
-	console.log("CO2 : GOOGLE SEARCH : " + window.location.host);
-	console.log("CO2 : +" + co2 + " = " + _co2Count);
+	//console.log("CO2 : GOOGLE SEARCH : " + window.location.host);
+	//console.log("CO2 : +" + co2 + " = " + _co2Count);
 }
 
 function RegularPageLoaded()
 {
 	var co2 = 1.1;
 	AddCo2(co2);
-	console.log("CO2 : REGULAR PAGE LOAD DETECTED : " + window.location.host);
-	console.log("CO2 : +" + co2 + " = " + _co2Count);
+	//console.log("CO2 : REGULAR PAGE LOAD DETECTED : " + window.location.host);
+	//console.log("CO2 : +" + co2 + " = " + _co2Count);
 }
 
 function PageLoaded()
@@ -122,6 +136,10 @@ function PageLoaded()
 					host.indexOf("soundcloud.") > -1){
 			AudioStarted();
 		}
+		/*else if (host.indexOf("facebook.") > -1)
+		{
+			BigWebsiteStarted(0.001);
+		}*/
 	}
 }
 

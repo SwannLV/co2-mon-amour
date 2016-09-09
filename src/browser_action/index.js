@@ -33,16 +33,18 @@ function DisplayEquivalences(co2User)
   $("#equi1").html(
     FormatEquivalence(co2User, 254, 2, "<b>[v] km</b> de voiture", "car3") +       
     FormatEquivalence(co2User, 85.0, 2, "<b>[v] km</b> en avion <abbr title=\"Prendre l'avion consomme beaucoup plus que la voiture \ncar le nombre de km effectués est beaucoup plus important\">par personne</abbr> <i class='material-icons'>&#xE195;</i>") +
-    FormatEquivalence(co2User, 8.0, 0, "<b>[v] h</b> d'ampoule allumée en France <i class=\"material-icons\">&#xE42E;</i>") /*    
+    FormatEquivalence(co2User, 8.0, 0, "<b>[v] h</b> d'ampoule allumée <i class=\"material-icons\">&#xE42E;</i>")// en France
+    /*    
     FormatEquivalence(co2User, 15000.0 / 900.0 , 1, "<b>[v] kg</b> de glace fondue", "ice1") +
     FormatEquivalence(co2User, 1000.0 / 24.0, 1, "<b>[v] h</b> de respiration humaine", "hum1")*/
   );
-  /*$("#equi2").html(
-    // FormatEquivalence(co2User, 85.0, 2, "<b>[v] km</b> en avion par personne") +
-     FormatEquivalence(co2User, 2.6, 0, "Frigo allumé pendant <b>[v] h</b> en France") +
-     FormatEquivalence(co2User, 46.6, 0, "Incinération de <b>[v] kg</b> de papier en France") // +
-    //FormatEquivalence(co2User, 29.0, 0, "<b>[v] h</b> d'ampoule allumée en Europe")
-  );*/
+  $("#equi2").html(
+     // FormatEquivalence(co2User, 85.0, 2, "<b>[v] km</b> en avion par personne") +
+     //FormatEquivalence(co2User, 2.6, 0, "<b>[v] h</b> de frigo allumé") +// en France
+     FormatEquivalence(co2User, 46.6, 2, "<b>[v] kg</b> de papier incinéré") +// en France
+     //FormatEquivalence(co2User, 29.0, 0, "<b>[v] h</b> d'ampoule allumée en Europe")
+     FormatEquivalence(co2User, 1000, 2, "<b>[v] j</b> de respiration humaine"+"<i class=\"material-icons\">&#xE566;</i>"+"<br/><i>mais cela ne produit <abbr title=\"Contrairement aux énérgies fossiles, au méthane (...) qui relâchent du CO2 auparavant enfermé\">aucune pollution</abbr> !</i>")
+  );
 }
 
 /*
