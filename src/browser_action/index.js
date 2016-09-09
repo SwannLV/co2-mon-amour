@@ -78,7 +78,10 @@ function SaveToLocalStorage(key, value)
 
 function DisplayLastReset(date)
 {
-  $("#lastReset").html(GetFormattedDate(new Date(date)));
+  var days = DaysPassed(new Date(date));
+  var label = " jour";
+  if(days > 1) { label += "s"; }
+  $("#nbdays").html(days + label);
 }
 
 function GetFormattedDate(date) 
@@ -89,4 +92,11 @@ function GetFormattedDate(date)
     var hours = date.getHours();
     var minutes = ("0" + date.getMinutes()).slice(-2);
     return day + "/" + month + "/" + year + " à " + hours + ":" + minutes;
+}
+
+function DaysPassed(date)
+{
+  var timeDiff = Math.abs(date.getTime() - new Date().getTime());
+  console.log(timeDiff);
+  return Math.ceil(timeDiff / (1000 * 3600 * 24)); 
 }
