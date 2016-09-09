@@ -31,9 +31,7 @@ function ResetCo2Count()
 function DisplayEquivalences(co2User)
 {  
   $("#equi1").html(
-    FormatEquivalence(co2User, /*250.0*/ 150.0, 2, "<b>[v] km</b> de voiture", "car3") +
-    
-    
+    FormatEquivalence(co2User, 254, 2, "<b>[v] km</b> de voiture", "car3") +       
     FormatEquivalence(co2User, 85.0, 2, "<b>[v] km</b> en avion <abbr title=\"Prendre l'avion consomme beaucoup plus que la voiture \ncar le nombre de km effectués est beaucoup plus important\">par personne</abbr> <i class='material-icons'>&#xE195;</i>") +
     FormatEquivalence(co2User, 8.0, 0, "<b>[v] h</b> d'ampoule allumée en France <i class=\"material-icons\">&#xE42E;</i>") /*    
     FormatEquivalence(co2User, 15000.0 / 900.0 , 1, "<b>[v] kg</b> de glace fondue", "ice1") +
