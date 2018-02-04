@@ -1,4 +1,6 @@
-# CO2 mon amour .... NOT!
+# CO2 mon amour .... NOT! 
+
+https://chrome.google.com/webstore/detail/eco2logy/injkhbadkipaflldkehemjglmgdnfdoj
 
 ## Pour installer cette version :
 - Télécharger https://github.com/SwannLV/co2-mon-amour/archive/master.zip
