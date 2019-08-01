@@ -1,6 +1,6 @@
 {
   "name": "eCO2logy",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "manifest_version": 2,
   "description": "Surfer écolo, est-ce possible ?",
   "homepage_url": "https://chrome.google.com/webstore/detail/co₂-mon-amour-not/injkhbadkipaflldkehemjglmgdnfdoj",
@@ -27,9 +27,7 @@
   ],
   "content_scripts": [
     {
-      "matches": [
-        "http://*/*", "https://*/*"
-      ],
+      "matches": ["<all_urls>"],
       "js": [
         "js/jquery/jquery.min.js",
         "src/inject/inject.js"

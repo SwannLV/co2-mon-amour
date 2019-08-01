@@ -1,4 +1,4 @@
-chrome.extension.sendMessage({}, function(response) {
+chrome.runtime.sendMessage({}, function(response) {
 	var readyStateCheckInterval = setInterval(function() {
 	if (document.readyState === "complete") {
 		clearInterval(readyStateCheckInterval);
@@ -46,23 +46,23 @@ function SaveToLocalStorage(key, value)
 	var obj = {};
 	obj[key] = value;
 	chrome.storage.local.set(obj, function() {
-		/*console.log('local storage \"' + key + '\" saved with value :');
-    	console.log(value);*/
+		// console.log('local storage \"' + key + '\" saved with value :');
+  	// console.log(value);
 	});
-}
-
-function VideoStarted()
-{
-	_streaming = true;	
-	//console.log("CO2 : Video started");
-	_streamingTimer = window.setInterval("VideoPlaying()", 1000 * _nbSecondsStreamingInterval);
 }
 
 function VideoPlaying()
 {
 	var co2 = 0.02 * _nbSecondsStreamingInterval;
 	AddCo2(co2);	
-	//console.log("CO2 : +" + co2 + " = " + _co2Count);
+	// console.log("CO2 : +" + co2 + " = " + _co2Count);
+}
+
+function VideoStarted()
+{
+	_streaming = true;	
+	// console.log("CO2 : Video started");
+	_streamingTimer = window.setInterval(VideoPlaying, 1000 * _nbSecondsStreamingInterval);
 }
 
 function VideoStopped()
@@ -76,7 +76,7 @@ function AudioStarted()
 {
 	_streaming = true;	
 	//console.log("CO2 : Audio started");
-	_streamingTimer = window.setInterval("AudioPlaying()", 1000 * _nbSecondsStreamingInterval);
+	_streamingTimer = window.setInterval(AudioPlaying, 1000 * _nbSecondsStreamingInterval);
 }
 
 function BigWebsiteStarted(co2rate)
@@ -168,7 +168,7 @@ function InitCo2Detections()
 
 //init
 $(function(){
-	chrome.storage.local.get("co2Count", function (obj) { 
+	chrome.storage.local.get("co2Count", function (obj) {
 		if(isNaN(obj.co2Count)){ obj.co2Count = 0.0; SaveCo2Count(obj.co2Count); }
 		_co2Count = obj.co2Count;
 		InitCo2Detections();
